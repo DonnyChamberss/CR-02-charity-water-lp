@@ -1,47 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charity: Water — Home</title>
+  <style>
+    /* Brand palette */
+    :root{ --brand-yellow:#FFC907; --deep-navy:#003366; --black:#1A1A1A; --white:#FFFFFF; }
+
+    *,*::before,*::after{ box-sizing:border-box; }
+    body{ margin:0; font-family: 'Open Sans', Arial, sans-serif; background:var(--black); color:var(--white); line-height:1.65; }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; height:auto; display:block; border-radius:12px; }
+
+    /* Header */
+    header{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 20px; background:var(--black); border-bottom:2px solid var(--brand-yellow); }
+    .logo{ font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight:700; font-size:1.5rem; color:var(--white); }
+    .logo .accent{ color:var(--white); } /* WATER stays white */
+    nav ul{ list-style:none; display:flex; gap:12px; margin:0; padding:0; flex-wrap:wrap; }
+    nav a{ font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif; font-weight:600; padding:8px 12px; border-radius:10px; transition:background .2s ease, transform .15s ease; }
+    nav a:hover{ background:#222; transform:translateY(-1px); }
+
+    /* Shared button styles */
+    .btn{ display:inline-block; background:var(--brand-yellow); color:var(--black); padding:12px 22px; border-radius:999px; font-weight:700; font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif; border:none; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,.35); transition: all .25s ease; }
+    .btn:hover{ background:var(--deep-navy); color:var(--white); transform:scale(1.05); box-shadow:0 6px 14px rgba(0,0,0,.45); }
+    .btn.ghost{ background:#fff; color:var(--black); border:2px solid var(--brand-yellow); box-shadow:none; }
+    .btn.ghost:hover{ background:var(--deep-navy); color:#fff; }
+
+    /* Hero */
+    .hero{ padding: clamp(40px,8vw,96px) clamp(16px,5vw,40px); }
+    .hero__grid{ display:grid; gap:28px; align-items:center; }
+    .overlay{ background:#0d0d0d; border:1px solid #262626; padding: clamp(20px,4vw,40px); border-radius:14px; }
+    .eyebrow{ display:inline-block; font-family:'Montserrat',sans-serif; font-weight:700; letter-spacing:.06em; font-size:14px; color:var(--black); background:var(--brand-yellow); padding:8px 14px; border-radius:999px; margin-bottom:18px; }
+    .hero h1{ font-family:'Montserrat',sans-serif; font-weight:700; font-size: clamp(32px,6.5vw,64px); line-height:1.12; margin:0 0 16px; }
+    .subhead{ font-family:'Montserrat',sans-serif; font-weight:600; font-size: clamp(16px,3vw,22px); margin:0 0 14px; }
+    .cta{ display:flex; gap:12px; flex-wrap:wrap; }
+    .hero__media{ min-height:240px; }
+    /* Replace the src below with your GitHub RAW image URL */
+    .hero__media img{ content:url('your-image-path'); }
+
+    /* About */
+    .about{ border-top:2px solid var(--brand-yellow); padding: clamp(48px,8vw,110px) clamp(16px,5vw,40px); text-align:center; }
+    .about h2{ font-family:'Montserrat',sans-serif; font-size: clamp(24px,5vw,36px); margin:0 0 12px; }
+    .about p{ max-width:760px; margin:0 auto 22px; color:#cfe3f0; }
+
+    footer{ border-top:1px solid #262626; padding:24px; text-align:center; font-size:.9rem; }
+
+    /* Interactive popup */
+    .popup-overlay{ position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; place-items:center; z-index:1000; }
+    .popup{ background:#fff; color:var(--black); padding:26px; border-radius:12px; width:min(90vw,420px); text-align:center; box-shadow:0 24px 60px rgba(0,0,0,.6); }
+    .popup h2{ color:var(--deep-navy); margin:0 0 10px; }
+
+    /* Responsive */
+    @media (min-width:600px){ .hero__grid{ grid-template-columns: 1.05fr 1fr; } header{ padding:18px 32px; } }
+    @media (max-width:600px){ header{ flex-wrap:wrap; } .logo{ width:100%; text-align:center; } nav{ width:100%; } nav ul{ justify-content:center; } }
+  </style>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
+  <header>
+    <!-- We use a container div to keep the logo and image together -->
+    <div style="display: flex; align-items: center;">
+      <!-- Yellow jerry can image, left of the logo text -->
+      <img src="img/jerry_can_yellow (1).png" alt="Yellow Jerry Can" style="height:38px; margin-right:10px;">
+      <div class="logo">Charity: <span class="accent">Water</span></div>
+    </div>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#take-action">Take Action</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#why-water">Why Water</a></li>
+        <li><a class="btn" href="#sign-up">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
-
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__grid">
+        <div class="overlay">
+          <span class="eyebrow">Clean water changes everything</span>
+          <h1>YOU make every drop matter.</h1>
+          <p class="subhead">Donate today and watch where your money flows</p>
+          <p>charity: water brings clean, safe drinking water to people in need. We fund community‑led projects, share transparent reports, and make it easy to see the impact your gift creates.</p>
+          <div class="cta">
+            <button class="btn" id="trackImpactBtn">Track my Impact</button>
+            <a class="btn ghost" href="#learn">Why Water</a>
+          </div>
         </div>
+        <div class="hero__media">
+          <!-- This image shows clean water on hands. The src points to the img folder. -->
+          <img src="img/Charity-water.jpg" alt="Clean water on hands" />
+        </div>
+      </div>
     </section>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <h2>About Charity: Water</h2>
+      <p>Charity: Water is a nonprofit dedicated to bringing clean and safe drinking water to people in developing countries. By funding sustainable, community‑led water projects and staying fully transparent, every donation moves us closer to ending the water crisis.</p>
+      <a class="btn" id="watchFlowBtn" href="#track">Watch it Flow</a>
     </section>
+  </main>
+
+  <footer>© 2025 Charity: Water — Demo layout for coursework</footer>
+
+  <!-- Interactive popup for Track my Impact -->
+  <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup">
+      <h2 id="popupTitle">Tracking your impact…</h2>
+      <p>We’ll show you exactly where your donation goes.</p>
+      <div style="height:10px;background:#e8edf3;border-radius:999px;overflow:hidden;margin:12px 0 8px">
+        <div id="bar" style="height:100%;width:0;background:var(--brand-yellow);transition:width 2.2s linear"></div>
+      </div>
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:10px">
+        <button class="btn ghost" id="closePopup" type="button">Close</button>
+        <a class="btn" href="#donate">Donate</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const trackBtn = document.getElementById('trackImpactBtn');
+    const overlay = document.getElementById('popupOverlay');
+    const closeBtn = document.getElementById('closePopup');
+    const bar = document.getElementById('bar');
+
+    function openPopup(){
+      overlay.style.display = 'grid';
+      bar.style.width = '0%';
+      requestAnimationFrame(() => bar.style.width = '100%');
+    }
+    function closePopup(){ overlay.style.display = 'none'; }
+
+    trackBtn.addEventListener('click', (e)=>{ e.preventDefault(); openPopup(); });
+    closeBtn.addEventListener('click', closePopup);
+    overlay.addEventListener('click', (e)=>{ if(e.target === overlay) closePopup(); });
+  </script>
 </body>
 </html>
