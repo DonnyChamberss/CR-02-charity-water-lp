@@ -4,7 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Charity: Water — Home</title>
+  <!-- Add Proxima Nova font from Adobe Fonts (or use a similar free fallback) -->
+  <!-- For beginners: Proxima Nova is not a free web font, so we use system-ui as a fallback. -->
   <style>
+    /* Use Proxima Nova if available, otherwise fall back to system fonts */
+    body {
+      font-family: 'Proxima Nova', 'Open Sans', Arial, sans-serif;
+      background:var(--black); color:var(--white); line-height:1.65;
+    }
+    .logo, nav a, .btn, .eyebrow, .hero h1, .subhead, .about h2 {
+      font-family: 'Proxima Nova', 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
     /* Brand palette */
     :root{ --brand-yellow:#FFC907; --deep-navy:#003366; --black:#1A1A1A; --white:#FFFFFF; }
 
@@ -37,7 +48,7 @@
     .cta{ display:flex; gap:12px; flex-wrap:wrap; }
     .hero__media{ min-height:240px; }
     /* Replace the src below with your GitHub RAW image URL */
-    .hero__media img{ content:url('your-image-path'); }
+    /* .hero__media img{ content:url('your-image-path'); } */
 
     /* About */
     .about{ border-top:2px solid var(--brand-yellow); padding: clamp(48px,8vw,110px) clamp(16px,5vw,40px); text-align:center; }
@@ -90,7 +101,7 @@
         </div>
         <div class="hero__media">
           <!-- This image shows clean water on hands. The src points to the img folder. -->
-          <img src="img/Charity-water.jpg" alt="Clean water on hands" />
+          <img src="img/Child.png" alt="Clean water on hands" />
         </div>
       </div>
     </section>
@@ -103,7 +114,10 @@
     </section>
   </main>
 
-  <footer>© 2025 Charity: Water — Demo layout for coursework</footer>
+  <footer>
+    <!-- The footer explains the nonprofit status for students -->
+    charity: water is a 501(c)(3) nonprofit organization.
+  </footer>
 
   <!-- Interactive popup for Track my Impact -->
   <div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
